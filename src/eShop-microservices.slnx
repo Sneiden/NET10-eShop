@@ -1,1 +1,10 @@
-<Solution />
+<Solution>
+  <Folder Name="/ApiGateways/" />
+  <Folder Name="/BuildingBlocks/" />
+  <Folder Name="/Services/" />
+  <Folder Name="/Services/Basket/" />
+  <Folder Name="/Services/Catalog/" />
+  <Folder Name="/Services/Discount/" />
+  <Folder Name="/Services/Ordering/" />
+  <Folder Name="/WebApps/" />
+</Solution>
