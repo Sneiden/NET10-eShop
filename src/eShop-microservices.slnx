@@ -1,6 +1,8 @@
 <Solution>
   <Folder Name="/ApiGateways/" />
-  <Folder Name="/BuildingBlocks/" />
+  <Folder Name="/BuildingBlocks/">
+    <Project Path="BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj" Id="159c8b12-efcc-4b82-b577-d72e51813205" />
+  </Folder>
   <Folder Name="/Services/" />
   <Folder Name="/Services/Basket/" />
   <Folder Name="/Services/Catalog/">
