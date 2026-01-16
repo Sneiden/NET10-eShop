@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using CatalogAPI.Models;
-using Marten;
-
+﻿
 namespace CatalogAPI.Products.CreateProduct
 {
     public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal Price)
