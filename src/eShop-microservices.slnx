@@ -11,4 +11,7 @@
   <Folder Name="/Services/Discount/" />
   <Folder Name="/Services/Ordering/" />
   <Folder Name="/WebApps/" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
