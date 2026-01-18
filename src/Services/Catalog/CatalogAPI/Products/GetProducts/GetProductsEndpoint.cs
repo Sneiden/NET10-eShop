@@ -1,0 +1,25 @@
+﻿
+namespace CatalogAPI.Products.GetProducts
+{
+    // public record GetProductsRequest();
+    public record GetProductResponse(IEnumerable<Product> Products);
+    public class GetProductsEndpoint : ICarterModule
+    {
+        public void AddRoutes(IEndpointRouteBuilder app)
+        {
+            app.MapGet("/products", async (ISender sender) =>
+            {
+                var result = await sender.Send(new GetProductsQuery()); // mediatoR request
+
+                var response = result.Adapt<GetProductResponse>(); // mapping with mapster
+
+                return Results.Ok(response);
+            })
+                .WithName("GetProducts")
+                .Produces<GetProductsResult>(StatusCodes.Status200OK)
+                .ProducesProblem(StatusCodes.Status400BadRequest)
+                .WithSummary("Get Products")
+                .WithDescription("Get Products");
+        }
+    }
+}
