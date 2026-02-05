@@ -7,4 +7,5 @@ global using BuildingBlocks.Behaviors;
 global using BuildingBlocks.Exceptions.Handler;
 global using CatalogAPI.Models;
 global using CatalogAPI.Exceptions;
+global using CatalogAPI.Data;
 global using FluentValidation;
