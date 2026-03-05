@@ -3,6 +3,7 @@ using Discount.Grpc.Models;
 using Grpc.Core;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Discount.Grpc.Services
 {
@@ -57,9 +58,21 @@ namespace Discount.Grpc.Services
             return couponModel;
         }
 
-        public override Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
+        public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
         {
-            return base.DeleteDiscount(request, context);
+            var coupon = await dbContext
+                .Coupons
+                .FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
+
+            if (coupon is null)
+                throw new RpcException(new Status(StatusCode.NotFound, $"Discount with ProductName = {request.ProductName} was not found."));
+
+            dbContext.Coupons.Remove(coupon);
+            await dbContext.SaveChangesAsync();
+
+            logger.LogInformation("Discount is successfully deleted. ProductName : {ProductName}", request.ProductName);
+
+            return new DeleteDiscountResponse { Success = true } ;
         }
     }
 }
