@@ -1,8 +1,16 @@
+using Ordering.API;
+using Ordering.Application;
+using Ordering.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service to the container
-var app = builder.Build();
+builder.Services
+    .AddApllicationServices()
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApiServices();
 
+var app = builder.Build();
 // Configure the HTTP request pipeline
 
 app.Run();
