@@ -13,6 +13,8 @@ namespace Ordering.Infrastructure
             // Add services to the container.
             services.AddDbContext<ApplicationDbContext>(options =>
                   options.UseSqlServer(connectionString));
+            // Add-Migration InitialCreate -OutputDir Data/Migrations -Project Ordering.Infrastructure -StartupProject Ordering.API
+            // Run this command to re-create Migrations
 
             //services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
